@@ -25,7 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://admin-alexis:</password>@cluster0.sgrrt.mongodb.net/userDB");
+mongoose.connect("mongodb+srv://admin-alexis:" + process.env.MONGO_DB_PW + "@cluster0.sgrrt.mongodb.net/userDB");
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -166,6 +166,6 @@ app.post("/login", function(req, res){
     });
 });
 
-app.listen(proces.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("Server started successfully.");
 });
